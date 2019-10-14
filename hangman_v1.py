@@ -8,16 +8,55 @@ word_list = 'monkey ship ocean computer planet'.upper().split()
 random.shuffle(word_list)
 
 hangman_board = ['''
-    PLACEHOLDER #0 - Zero''',''' 
-    PLACEHOLDER #1 - One''','''
-    PLACEHOLDER #2 - Two''','''
-    PLACEHOLDER #3 - Three''','''
-    PLACEHOLDER #4 - Four''','''
-    PLACEHOLDER #5 - Five''','''
-    PLACEHOLDER #6 - Six''','''
-    '''
-]
-
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
 
 secret_word = word_list.pop()
 correct = []
@@ -31,13 +70,13 @@ print(f"Debugger: {secret_word} ")
 def draw_game_board():
     # Draws the hangman ascii as well as the word display board
     print(hangman_board[len(incorrect)])
-    print("\n\n\n")
+    print("\n\n")
     for i in secret_word:
         if i in correct:
             print(i, end=' ')
         else:
             print('_', end=' ')
-    print("\n\n\n")
+    print("\n\n")
     print("********* YOUR GUESSES SO FAR *********")
     for i in incorrect:
         print(i, end=' ')
