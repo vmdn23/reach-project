@@ -17,3 +17,5 @@ sudo make altinstall
 # upgrade pip
 sudo pip3.7 install --upgrade pip
 
+# install requests library
+sudo pip3 install requests
