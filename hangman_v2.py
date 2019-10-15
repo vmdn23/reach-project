@@ -28,15 +28,17 @@ print(f"Debugger: {secret_word} ")
 
 
 def draw_game_board():
-    # Draws the hangman ascii as well as the word display board
+    """ Draws the hangman ascii as well as the word display board """
     print(assets.hangman_board[len(incorrect)])
     print("\n\n")
+
     for i in secret_word:
         if i in correct:
             print(i, end=' ')
         else:
             print('_', end=' ')
     print("\n\n")
+
     print("********* YOUR GUESSES SO FAR *********")
     for i in incorrect:
         print(i, end=' ')
@@ -44,7 +46,7 @@ def draw_game_board():
 
 
 def user_guess():
-    # Let's the user take a guess. Appends the letter to correct or inncorrect
+    """ Let's the user take a guess. Appends letter to correct or inncorrect list"""
     while True:
         pre_guess = input("Type in your guess\n: ").upper()
         guess = input_filter.search(pre_guess)
@@ -87,7 +89,7 @@ def user_guess():
 
 
 def win_checker():
-    # Checks to see if the user has won or lost the current game.        
+    """ Checks to see if the user has won or lost the current game. """  
     if len(incorrect) > 5:
         return 'lose'
     if correct == []:
