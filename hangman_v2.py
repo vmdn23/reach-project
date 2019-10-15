@@ -39,15 +39,20 @@ def draw_game_board():
             print('_', end=' ')
     print("\n\n")
 
-    print("********* YOUR GUESSES SO FAR *********")
+    print(f"~~~~~~~~~ HERE ARE YOUR GUESSES SO FAR ~~~~~~~~~")
+    # Prints out the incorrect letters 
     for i in incorrect:
         print(i, end=' ')
-    print("\n***************************************\n")
+    print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 
 
 def user_guess():
     """ Let's the user take a guess. Appends letter to correct or inncorrect list"""
     while True:
+
+        # num_guesses = 6
+        # print(f"~~~ You have {num_guesses} GUESSES LEFT! ~~~ ")
+
         pre_guess = input("Type in your guess\n: ").upper()
         guess = input_filter.search(pre_guess)
         specials = special_filter.search(pre_guess) 
@@ -75,7 +80,6 @@ def user_guess():
         else:
             break
 
-        
         """
         Need to account for numbers and letters A2123DO
         Add condition to prevent users from making big string of guess
@@ -84,8 +88,11 @@ def user_guess():
 
     if guess == secret_word or guess in secret_word:
         correct.append(guess)
+        # num_guesses -= 1
+        
     else:
         incorrect.append(guess)
+        # num_guesses -= 1
 
 
 def win_checker():
