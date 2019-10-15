@@ -18,10 +18,7 @@ def get_words():
 
     word_list = request.text.splitlines()
 
-    random.shuffle(word_list)
-    random_word = word_list.pop()
-
-    print(random_word)
+    return(word_list)
 
 
 if __name__ == "__main__":
