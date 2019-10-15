@@ -9,16 +9,16 @@ import assets
 
 # Filters inputs to only allow letters
 input_filter = re.compile('\w+')
+
 # Filters out special characters
 special_filter = re.compile('^.[~!@#$%^&()_+={}[]|:;“’<,>.?๐฿].$')
-
 
 # Grabs random word using the api_words function from the word dictionary api 
 word_list = get_words()
 random.shuffle(word_list)
 secret_word = word_list.pop().upper()
 
-
+# Keeps track of correct and incorrect guesses
 correct = []
 incorrect = []
 
@@ -73,8 +73,11 @@ def user_guess():
         else:
             break
 
-
-        """ Add condition to prevent users from making big string of guess"""
+        
+        """
+        Need to account for numbers and letters A2123DO
+        Add condition to prevent users from making big string of guess
+        """
 
 
     if guess == secret_word or guess in secret_word:
@@ -90,12 +93,9 @@ def win_checker():
     if correct == []:
         return 'not yet'
     for i in secret_word:
-        if i not in correct[0]:
+        if i not in correct:
             return 'not yet'      
     return 'win'
-
-
-    """ NEED to add trigger to win when user completes guesses """
 
 
 while True:
@@ -103,11 +103,14 @@ while True:
     user_guess()
     game_status = win_checker()
 
+    # Losing Message
     if game_status == 'lose':
         print(assets.hangman_board[6])
         print("\n~~~ GAME OVER ~~~")
         print(f"The secret word was ~~~ {secret_word} ~~~")
         break
+
+    # Winning Message
     elif game_status == 'win':
         print("\n~~~~~ YOU WON THE GAME! ~~~~~")
         print(f"The secret word was ~~~ {secret_word} ~~~")
