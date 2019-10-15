@@ -4,6 +4,7 @@
 import random
 import re
 from api_words import get_words
+import assets
 
 
 # Filters inputs to only allow letters
@@ -22,66 +23,13 @@ correct = []
 incorrect = []
 
 
-hangman_board = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''']
-
-
-
 # Display word to check if underscores are working
 print(f"Debugger: {secret_word} ")
 
 
 def draw_game_board():
     # Draws the hangman ascii as well as the word display board
-    print(hangman_board[len(incorrect)])
+    print(assets.hangman_board[len(incorrect)])
     print("\n\n")
     for i in secret_word:
         if i in correct:
@@ -156,7 +104,7 @@ while True:
     game_status = win_checker()
 
     if game_status == 'lose':
-        print(hangman_board[6])
+        print(assets.hangman_board[6])
         print("\n~~~ GAME OVER ~~~")
         print(f"The secret word was ~~~ {secret_word} ~~~")
         break
