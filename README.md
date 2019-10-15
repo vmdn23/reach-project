@@ -5,5 +5,6 @@
 
 ## Requirements
 * Python 3.7.3
+* Python requests library 
 * Pytest
 * Ubuntu 18.04
