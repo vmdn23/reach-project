@@ -28,6 +28,9 @@ incorrect = []
 # Starting amount of guesses a user has
 lives = 6
 
+# Test debugging using 2 lives
+# lives = 2
+
 
 # Display word to check if underscores are working
 print(f"Debugger: {secret_word} ")
@@ -100,12 +103,9 @@ def user_guess(lives):
             # For every char in the string guess, add it to correct
             guess = [char for char in guess]
         correct.extend(guess)
-
-        lives -= 1
         
     else:
         incorrect.append(guess)
-        
         lives -= 1
         
     return lives
@@ -122,11 +122,14 @@ def win_checker():
     return 'win'
 
 def play_again():
+
+    # Need to fix lives count down 
+
     while True:
         replay = input('Do you want to play again? Enter "Y" or "N"\n:').upper()
 
         if replay.startswith('Y'):
-            # lives = 6
+            lives = 3099
             correct=[]
             incorrect=[]
             guess=[]
@@ -134,9 +137,9 @@ def play_again():
             """ need to reset and redraw game board """
 
             draw_game_board()
-            user_guess(lives=6)
-
+            user_guess(lives)
             secret_word = word_list.pop()
+            game_status = win_checker()
 
             """ Need to reset secret word properly """
             # secret_word = random.shuffle(word_list).pop().upper()
