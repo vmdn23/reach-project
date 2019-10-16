@@ -95,11 +95,6 @@ def user_guess(lives):
         else:
             break
 
-        """
-   CHECK     Need to account for numbers and letters A2123DO
-        Add condition to prevent users from making big string of guess
-        """
-
     if guess == secret_word or guess in secret_word:
         if len(guess) > 1:
             # For every char in the string guess, add it to correct
@@ -126,7 +121,7 @@ def win_checker():
             return 'not yet'      
     return 'win'
 
-def playAgain():
+def play_again():
     while True:
         replay = input('Do you want to play again? Enter "Y" or "N"\n:').upper()
 
@@ -136,12 +131,14 @@ def playAgain():
             incorrect=[]
             guess=[]
 
+            """ need to reset and redraw game board """
+
             draw_game_board()
             user_guess(lives=6)
 
             secret_word = word_list.pop()
 
-            # Need to reset secret word properly
+            """ Need to reset secret word properly """
             # secret_word = random.shuffle(word_list).pop().upper()
 
             # secret_word = word_list.shuffle(word_list).pop()
@@ -167,7 +164,7 @@ while True:
         print("\n~~~ GAME OVER ~~~")
         print(f"The secret word was ~~~ {secret_word} ~~~")
         
-        replay = playAgain()
+        replay = play_again()
         if replay:
             continue 
         else:
@@ -178,7 +175,7 @@ while True:
         print("\n~~~~~ YOU WON THE GAME! ~~~~~")
         print(f"\nThe secret word was ~~~ {secret_word} ~~~")
 
-        replay = playAgain()
+        replay = play_again()
         if replay:
             continue 
         else:
