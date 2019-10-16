@@ -40,7 +40,9 @@ def draw_game_board():
     """ Draws the hangman ascii as well as the word display board """
     
     # Prints out the hangman image according to the number of incorrect guesses
-    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("~~~~~~~~~~~~~~~~~~~~ HANGMAN ~~~~~~~~~~~~~~~~~~~~")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     print(assets.hangman_board[len(incorrect)])
     print("\n\n")
 
@@ -71,6 +73,8 @@ def user_guess(lives):
 
         # Filters out the guess input by special characters and numbers
         pre_guess = input("Type in your guess\n: ").upper()
+        print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+
         guess = input_filter.search(pre_guess)
         specials = special_filter.search(pre_guess)
         num_check = num_filter.search(pre_guess)
