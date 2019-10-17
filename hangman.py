@@ -97,7 +97,7 @@ def user_guess():
         print("\nYour guess is too long. Try again!\n")
         return 0
 
-    elif guess in game_stats["correct"] or guess in game_stats["correct"]:
+    elif guess in game_stats["correct"]:
         print("\nYou've already guessed that! Try again.\n")
         return 0
 
