@@ -69,7 +69,7 @@ If you see a dashboard like the one shown below, you are ready to play!
 
 ## Game Rules
 Here are the rules for the game:
-``
+```
 You have 6 chances to guess the secret word or you lose
 You can guess letters or words 
 You can't guess numbers or special characters
