@@ -10,7 +10,7 @@ This is a commandline hangman game that was created by Victor Nguyen using Pytho
 
 
 1. [Getting Started](README.md#getting-started)
-    * Prequisites
+    * Prerequisites
     * Installation
     * How to run the game
 2. [Game Rules](README.md#game-rules)
@@ -30,7 +30,7 @@ This is a commandline hangman game that was created by Victor Nguyen using Pytho
 Please follow these instructions to get a copy of the project up and running on your local machine.
 
 
-### Prequisites
+### Prerequisites
 You will need to install the following:
 ```
 Python 3.7.3
@@ -93,20 +93,19 @@ If you see a dashboard like the one below, you lose!
 ![Fig 2: Hangman game over image](/images/hangman_gameover.png)
 
 
-
 ## File Descriptions
 
 ---
 File|Task
 ---|---
-images | ~~~
-scripts | ~~~
-api_words.py | ~~~
-assets.py | ~~~
-hangman.py | ~~~
-hangman_v1.py | ~~
-hangman_v2.py | ~~
-test_hangman.py | ~~~
+images | Hangman start and gameover images
+scripts | Prerequisites installation scripts
+api_words.py | Function to grab the world list from the provided api
+assets.py | ASCII Hangman images
+hangman.py | Final version of Hangman game
+hangman_v1.py | Prototype version 1 of Hangman game
+hangman_v2.py | Prototype version 2 of Hangman game
+test_hangman.py | Test file with proposed tests for Hangman game
 
 
 ## Reported Bugs
