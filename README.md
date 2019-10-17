@@ -141,5 +141,5 @@ Reliability and scale:
 ## Credits
 Created by Victor Nguyen | [@victormdnguyen](https://twitter.com/victormdnguyen)
 
-Hangman ASCII art: https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
-Linkedin Reach banner art: https://content.linkedin.com/content/dam/engineering/site-assets/images/blog/posts/2019/08/reach1.png
+* Hangman ASCII art: https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
+* Linkedin Reach banner art: https://content.linkedin.com/content/dam/engineering/site-assets/images/blog/posts/2019/08/reach1.png
