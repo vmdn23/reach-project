@@ -39,8 +39,7 @@ def draw_game_board():
     print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("~~~~~~~~~~~~~~~~~~~~~~~ HANGMAN ~~~~~~~~~~~~~~~~~~~~~~~")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    print(
-        assets.hangman_board[game_stats["starting_lives"] - game_stats["lives"]])
+    print(assets.hangman_board[game_stats["starting_lives"] - game_stats["lives"]])
     print("\n\n")
 
     # Print out the letter of the secret word if guessed correctly or _
