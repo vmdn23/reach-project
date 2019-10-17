@@ -1,9 +1,9 @@
-# Linkedin Reach Project - Commandline Hangman
+# Linkedin Reach Project - Command Line Hangman
 
 
 !["Linkedin Reach Banner"](https://content.linkedin.com/content/dam/engineering/site-assets/images/blog/posts/2019/08/reach1.png)
 
-This is a commandline hangman game that was created by Victor Nguyen using Python for the Linkedin Reach Apprenticeship application.
+This is a command line hangman game that was created by Victor Nguyen using Python for the Linkedin Reach Apprenticeship application.
 
 
 ## Table of Contents
