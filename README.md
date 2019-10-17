@@ -80,7 +80,8 @@ How to make a guess:
 * Type in your guess and press enter
 
 If you see a dashboard like the one below, you lose!
-![Fig 2: Hangman game over image](/images/hangman_start.png)
+
+![Fig 2: Hangman game over image](/images/hangman_game_over.png)
 
 ## Reported Bugs
 * One user reported that they had issues entering a guess when using iterm. (Investigation Pending)
