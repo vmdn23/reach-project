@@ -27,9 +27,8 @@ word_list = get_words()
 random.shuffle(word_list)
 game_stats["secret_word"] = word_list.pop().upper()
 
-
-# Display word to check if underscores are working
-# print(f"Debugger: {game_stats['secret_word']} ")
+# Allowed number of guesses
+GUESS_LIMIT = 6
 
 
 def draw_game_board():
@@ -121,7 +120,7 @@ def user_guess():
 
 def win_checker():
     """ Checks to see if the user has won or lost the current game. """  
-    if len(game_stats["incorrect"]) > 5:
+    if len(game_stats["incorrect"]) == GUESS_LIMIT:
         return 'lose'
     if game_stats["correct"] == []:
         return 'alive'
