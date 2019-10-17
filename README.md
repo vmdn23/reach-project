@@ -18,6 +18,7 @@ This is a command line hangman game that was created by Victor Nguyen using Pyth
 4. [Reported Bugs](README.md#reported-bugs)
 5. [Future Work](README.md#future-work)
     * Refactor code for performance
+    * UX/UI
     * Expand testing suite
     * Online access
     * Reliability and scale
@@ -25,8 +26,6 @@ This is a command line hangman game that was created by Victor Nguyen using Pyth
 
 
 ## Getting Started
-
-
 Please follow these instructions to get a copy of the project up and running on your local machine.
 
 
@@ -94,7 +93,6 @@ If you see a dashboard like the one below, you lose!
 
 
 ## File Descriptions
-
 ---
 File|Task
 ---|---
@@ -113,19 +111,31 @@ test_hangman.py | Test file with proposed tests for Hangman game
 
 
 ## Future Work
-
 Refactor code for performance:
-    * Improve loading time and speed
-    * Make code more modular
+* Improve loading time and speed
+* Break up code to make it more modular
+* Update installation scripts to use Python setup scripts`setup.py` & `requirements.txt`
+* Redesign code using Object Oriented principles
+
+UX/UI:
+* Improve command line game dashboard layout
+* Center secret word underscores 
+* Change `CHANCES` to `CHANCE` when there is only one remaining guess left
 
 Expand testing suite:
-    *
+* Get testing suite to work
+* Break up code to make testing more modular
+* Cover more test cases
 
 Online access:
-    *
+* Create an online in browser terminal that has the game avaiable
+* Redesign game to have a front end user interface
+* Create user login, score keeping function and leadership scoreboard
 
 Reliability and scale:
-    *
+* Deploy to a cloud platform with autoscaling groups for resiliency 
+* Set up automated testing using services like CircleCi, Jenkins or Travis
+* Add monitoring and alerting services to report on the health of the application
 
 
 ## Credits
