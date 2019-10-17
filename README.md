@@ -1,27 +1,34 @@
 # Linkedin Reach Project - Commandline Hangman
 
+
 !["Linkedin Reach Banner"](https://content.linkedin.com/content/dam/engineering/site-assets/images/blog/posts/2019/08/reach1.png)
 
 This is a commandline hangman game that was created by Victor Nguyen using Python for the Linkedin Reach Apprenticeship application.
 
+
 ## Table of Contents
+
 
 1. [Getting Started](README.md#getting-started)
     * Prequisites
     * Installation
     * How to run the game
 2. [Game Rules](README.md#game-rules)
-3. [Reported Bugs](README.md#reported-bugs)
-4. [Future Work](README.md#future-work)
+3. [File Descriptions](README.md#file-descriptions)
+4. [Reported Bugs](README.md#reported-bugs)
+5. [Future Work](README.md#future-work)
     * Refactor code for performance
     * Expand testing suite
     * Online access
     * Reliability and scale
-5. [Credits](README.md#credits)
+6. [Credits](README.md#credits)
+
 
 ## Getting Started
 
+
 Please follow these instructions to get a copy of the project up and running on your local machine.
+
 
 ### Prequisites
 You will need to install the following:
@@ -29,6 +36,7 @@ You will need to install the following:
 Python 3.7.3
 Python requests library 
 ```
+
 
 ### Installation
 Grab a copy of the program by entering the following into your terminal and `cd` into the repository.
@@ -55,6 +63,7 @@ cd scripts
 ```
 
 Once you have finished installing everything, you are ready to run the game.
+
 
 ### How to run the game
 Move back to the root directory of the repository and execute
@@ -83,11 +92,42 @@ If you see a dashboard like the one below, you lose!
 
 ![Fig 2: Hangman game over image](/images/hangman_gameover.png)
 
+
+
+## File Descriptions
+
+---
+File|Task
+---|---
+images | ~~~
+scripts | ~~~
+api_words.py | ~~~
+assets.py | ~~~
+hangman.py | ~~~
+hangman_v1.py | ~~
+hangman_v2.py | ~~
+test_hangman.py | ~~~
+
+
 ## Reported Bugs
 * One user reported that they had issues entering a guess when using iterm. (Investigation Pending)
 
 
 ## Future Work
+
+Refactor code for performance:
+    * Improve loading time and speed
+    * Make code more modular
+
+Expand testing suite:
+    *
+
+Online access:
+    *
+
+Reliability and scale:
+    *
+
 
 ## Credits
 Created by Victor Nguyen | [@victormdnguyen](https://twitter.com/victormdnguyen)
