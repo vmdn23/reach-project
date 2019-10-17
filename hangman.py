@@ -59,7 +59,7 @@ def draw_game_board():
 
 
 def user_guess():
-    """ Let's the user take a guess. Appends letter to "correct" or inn"correct" list"""
+    """ Let's the user take a guess. Appends letter to "correct" or "incorrect" list"""
     # Variable to obtain length of secret word and prevent guesses longer than it
     check_len = len(game_stats["secret_word"])
 
@@ -73,7 +73,7 @@ def user_guess():
     specials = special_filter.search(pre_guess)
     num_check = num_filter.search(pre_guess)
 
-    # If there is an empty guess or there isn't any special characters
+    # Checks if there is an empty guess or a guess with special special characters
     if guess is None:
         print("\nPlease enter a non-empty guess.\n")
         game_stats["lives"] -= 1
@@ -139,7 +139,7 @@ def win_checker():
 def play_again():
     replay = input('Do you want to play again? Enter "Y" or "N"\n:').upper()
 
-    # reinitialize the game
+    # Reinitialize the game
     if replay.startswith('Y'):
         game_stats["lives"] = game_stats["starting_lives"]
         game_stats["correct"] = []
