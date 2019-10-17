@@ -1,4 +1,7 @@
-# Hangman game
+# Hangman - Python command line interface edition
+# You have 6 chances to guess the secret word or you lose
+# You can guess letters or words 
+# You can't guess numbers or special characters
 
 
 import random
@@ -16,160 +19,154 @@ special_filter = re.compile('[~!@#$%^&()_+={}[]|:;“’<,>.?๐฿]')
 # Filters out numbers
 num_filter = re.compile('[0-9]+')
 
+# Keeps track of "correct" and "incorrect" guesses
+game_stats = {"correct": [], "incorrect": [], "secret_word": "", "lives" : 6, "starting_lives": 6}
+
 # Grabs random a word using the api_words function from the word dictionary api 
 word_list = get_words()
 random.shuffle(word_list)
-secret_word = word_list.pop().upper()
-
-# Keeps track of correct and incorrect guesses
-correct = []
-incorrect = []
-
-# Starting amount of guesses a user has
-lives = 6
-
-# Test debugging using 2 lives
-# lives = 2
+game_stats["secret_word"] = word_list.pop().upper()
 
 
 # Display word to check if underscores are working
-print(f"Debugger: {secret_word} ")
+# print(f"Debugger: {game_stats['secret_word']} ")
 
 
 def draw_game_board():
     """ Draws the hangman ascii as well as the word display board """
     
-    # Prints out the hangman image according to the number of incorrect guesses
+    # Prints out the hangman image according to the number lives available
     print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("~~~~~~~~~~~~~~~~~~~~~~~ HANGMAN ~~~~~~~~~~~~~~~~~~~~~~~")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    print(assets.hangman_board[len(incorrect)])
+    print(assets.hangman_board[game_stats["starting_lives"] - game_stats["lives"]])
     print("\n\n")
 
     # Print out the letter of the secret word if guessed correctly or _ 
-    for i in secret_word:
-        if i in correct:
+    for i in game_stats["secret_word"]:
+        if i in game_stats["correct"]:
             print(i, end=' ')
         else:
             print('_', end=' ')
     print("\n\n")
 
-    print("~~~~~~~~~~~~ HERE ARE YOUR GUESSES SO FAR  ~~~~~~~~~~~~")
-    # Prints out the incorrect letters 
-    for i in incorrect:
+    print("~~~~~~~~~~~~ HERE ARE YOUR GUESSES SO FAR ~~~~~~~~~~~~~")
+    # Prints out the "incorrect" letters 
+    for i in game_stats["incorrect"]:
         print(i, end=' ')
     print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 
 
-def user_guess(lives):
-    """ Let's the user take a guess. Appends letter to correct or inncorrect list"""
-
+def user_guess():
+    """ Let's the user take a guess. Appends letter to "correct" or inn"correct" list"""
     # Variable to obtain length of secret word and prevent guesses longer than it
-    check_len = len(secret_word)
-    
-    while True:
+    check_len = len(game_stats["secret_word"])
 
-        print(f"~~~~~ YOU HAVE {lives} LIVES LEFT! ~~~~~")
+    print(f"~~~~~ YOU HAVE {game_stats['lives']} CHANCES LEFT! ~~~~~")
 
-        # Filters out the guess input by special characters and numbers
-        pre_guess = input("Type in your guess\n: ").upper()
-        print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    # Filters out the guess input by special characters and numbers
+    pre_guess = input("Type in your guess\n: ").upper()
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 
-        guess = input_filter.search(pre_guess)
-        specials = special_filter.search(pre_guess)
-        num_check = num_filter.search(pre_guess)
+    guess = input_filter.search(pre_guess)
+    specials = special_filter.search(pre_guess)
+    num_check = num_filter.search(pre_guess)
 
-        # If there is an empty guess or there isn't any specail characters
-        if guess is None or specials is not None or num_check is not None:
-            print("\nPlease enter a non-empty guess with no special characters or numbers.\n")
-            lives -= 1
-            return lives
+    # If there is an empty guess or there isn't any special characters
+    if guess is None:
+        print("\nPlease enter a non-empty guess.\n")
+        game_stats["lives"] -= 1
+        return 0
         
-        # There is no group() in a none, reassign to fix error
+    elif specials is not None:
+        print("\nPlease don't enter special charcters, enter a word or letter.\n")
+        game_stats["lives"] -= 1
+        return 0
+    
+    elif num_check is not None:
+        print("\nPlease enter a word or letter.\n")
+        game_stats["lives"] -= 1
+        return 0
+    
+    # Search and return one or more sub group and prints out the actual match
+    else:
         guess = guess.group()
 
-        if len(guess) > check_len:
-            print("\nYour guess is too long. Try again!\n")
-        elif guess in correct or guess in incorrect:
-            print("\nYou've already guessed that! Try again.\n")
+    if len(guess) > check_len:
+        print("\nYour guess is too long. Try again!\n")
+        return 0
 
-        elif guess.isnumeric():
-            print("\nPlease enter letters and not numbers. Try again.\n")
-            
-        elif guess == secret_word:
-            break
+    elif guess in game_stats["correct"] or guess in game_stats["correct"]:
+        print("\nYou've already guessed that! Try again.\n")
+        return 0
         
-        else:
-            break
+    elif guess == game_stats["secret_word"]:
+        pass
+    
+    else:
+        pass
 
-    if guess == secret_word or guess in secret_word:
+    if guess == game_stats["secret_word"] or guess in game_stats["secret_word"]:
         if len(guess) > 1:
-            # For every char in the string guess, add it to correct
+            # For every char in the string guess, add it to "correct"
             guess = [char for char in guess]
-        correct.extend(guess)
+        game_stats["correct"].extend(guess)
         
     else:
-        incorrect.append(guess)
-        lives -= 1
+        # Appends guess to incorrect counter
+        game_stats["incorrect"].append(guess)
+        game_stats["lives"] -= 1
         
-    return lives
+    return True
 
 def win_checker():
     """ Checks to see if the user has won or lost the current game. """  
-    if len(incorrect) > 5:
+    if len(game_stats["incorrect"]) > 5:
         return 'lose'
-    if correct == []:
-        return 'not yet'
-    for i in secret_word:
-        if i not in correct:
-            return 'not yet'      
+    if game_stats["correct"] == []:
+        return 'alive'
+    for i in game_stats["secret_word"]:
+        if i not in game_stats["correct"]:
+            return 'alive'      
     return 'win'
 
 def play_again():
+    replay = input('Do you want to play again? Enter "Y" or "N"\n:').upper()
 
-    # Need to fix lives count down 
+    # reinitialize the game
+    if replay.startswith('Y'):
+        game_stats["lives"] = game_stats["starting_lives"]
+        game_stats["correct"]=[]
+        game_stats["incorrect"]=[]
 
-    while True:
-        replay = input('Do you want to play again? Enter "Y" or "N"\n:').upper()
-
-        if replay.startswith('Y'):
-            lives = 3099
-            correct=[]
-            incorrect=[]
-            guess=[]
-
-            """ need to reset and redraw game board """
-
-            draw_game_board()
-            user_guess(lives)
-            secret_word = word_list.pop()
-            game_status = win_checker()
-
-            """ Need to reset secret word properly """
-            # secret_word = random.shuffle(word_list).pop().upper()
-
-            # secret_word = word_list.shuffle(word_list).pop()
-            # word_list = get_words()
-            # random.shuffle(word_list)
-            # secret_word = word_list.pop().upper()
-            return True
-        elif replay.startswith('N'):
-            return False
-
-        else:
-            continue
-    
+        # Grabs a new word from api
+        random.shuffle(word_list)
+        game_stats["secret_word"] = word_list.pop().upper()
+        
+        return True
+        
+    elif replay.startswith('N'):
+        return False
 
 while True:
     draw_game_board()
-    lives = user_guess(lives)
+    state = user_guess()
+
+    # Checks if loop will continue again or not
+    if state is False:
+        continue
+    elif state is 0:
+        pass
+    else:
+        pass
+    
     game_status = win_checker()
     
     # Losing Message
-    if game_status == 'lose' or lives == 0:
+    if game_status == 'lose' or game_stats["lives"] <= 0:
         print(assets.hangman_board[6])
         print("\n~~~ GAME OVER ~~~")
-        print(f"The secret word was ~~~ {secret_word} ~~~")
+        print(f"The secret word was ~~~ {game_stats['secret_word']} ~~~")
         
         replay = play_again()
         if replay:
@@ -180,7 +177,7 @@ while True:
     # Winning Message
     elif game_status == 'win':
         print("\n~~~~~ YOU WON THE GAME! ~~~~~")
-        print(f"\nThe secret word was ~~~ {secret_word} ~~~")
+        print(f"\nThe secret word was ~~~ {game_stats['secret_word']} ~~~")
 
         replay = play_again()
         if replay:
