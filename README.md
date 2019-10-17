@@ -64,7 +64,7 @@ python3.7 hangman.py
 
 If you see a dashboard like the one shown below, you are ready to play!
 
-![Fig 1: Hangman game start image](/images/hangman_start.png)
+![Fig 1: Hangman start image](/images/hangman_start.png)
 
 
 ## Game Rules
@@ -73,12 +73,14 @@ Here are the rules for the game:
 You have 6 chances to guess the secret word or you lose
 You can guess letters or words 
 You can't guess numbers or special characters
-You can choose to play again after you win or loose
+You can choose to play again after you win or lose
 ```
 
 How to make a guess:
-Type in your guess and press enter
+* Type in your guess and press enter
 
+If you see a dashboard like the one below, you lose!
+![Fig 2: Hangman game over image](/images/hangman_start.png)
 
 ## Reported Bugs
 * One user reported that they had issues entering a guess when using iterm. (Investigation Pending)
