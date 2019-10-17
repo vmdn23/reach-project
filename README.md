@@ -98,7 +98,6 @@ If you see a dashboard like the one below, you lose!
 
 ---
 File|Task
----|---
 images | ~~~
 scripts | ~~~
 api_words.py | ~~~
