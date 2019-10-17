@@ -21,22 +21,41 @@ Grab a copy of the program by entering the following into your terminal and `cd`
 git clone https://github.com/vmdn23/reach-project.git
 ```
 
-If you are working on a new Ubuntu 18.04 environment, please run the `setup_build.sh` script.
+If you are working on a new `Ubuntu 18.04` environment, please run the `setup_build.sh` script.
 ```
 cd scripts
 ./setup_build
 ```
 
+Install Python 3.7.3
+```
+cd scripts
+./install_python3.7.sh
+```
+
+Install Pytest so that you can run tests in the future
+```
+cd scripts
+./install_pytest.sh
+```
+
+Once you have finished installing everything, you are ready to run the game.
+
+### How to run the game
+Move back to the root directory of the repository and execute
+```
+python3.7 hangman.py
+```
+
+If you see a dashboard like the one shown below, you are ready to play!
+
+![Fig 1: Hangman game startimage](/images/hangman_start.png)
 
 
+## Credits
+Created by Victor Nguyen | [@victormdnguyen](https://twitter.com/victormdnguyen)
 
 
-
-
-
-
-## Scripts
-* If you are working from a clean Ubuntu 18.04 environment, you can use this folder to install the proper environment to use the hangman game.
 
 ## Requirements
 * Python 3.7.3
